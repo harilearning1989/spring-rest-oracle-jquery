@@ -26,6 +26,7 @@ pipeline{
           {
              withEnv(["JAVA_HOME=${tool 'JAVA_HOME'}", "PATH=${tool 'JAVA_HOME'}/bin:${env.PATH}"])
              {
+                sh 'chmod 755 /tmp/Soft/git-2.9.4'
                 git 'https://github.com/harilearning1989/spring-rest-oracle-jquery.git'
                 sh 'java -version'
                 echo "Gradle"

@@ -1,0 +1,42 @@
+server:
+  port: 8081
+spring:
+  batch:
+    job:
+      enabled: false
+  main:
+    banner-mode: off
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    #url: jdbc:oracle:thin:@192.168.1.200:1521:cdb1
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: ORACLE_DEMO
+    password: dudkrish1A
+    jpa:
+      show-sql: true
+      format-sql: true
+      properties:
+        hibernate:
+          enable_lazy_load_no_trans: true
+      database-platform: org.hibernate.dialect.Oracle12cDialect
+      open-in-view: true
+      profiles:
+        active: dev
+logging:
+  file:
+    path: D:/elk/spring-boot-elk.log
+
+fullName: DUDDUKUNTA HARI KRISHNA REDDY
+localLocation: D:/DataFiles/Downloaded/
+
+csv:
+  read:
+    readCsv: Read Successfully
+val:
+  name: Hari
+some:
+  key: yes,no,cancel

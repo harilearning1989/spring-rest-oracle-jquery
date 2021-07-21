@@ -1,0 +1,44 @@
+pipeline{
+     environment {
+		 FOO = "foo"
+		 javaHome = tool name: 'JAVA_HOME', type: 'jdk'
+		 javaCMD = "${javaHome}/bin/java"
+
+		 mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+		 mvnCmd = "${mvnHome}/bin/mvn"
+
+		 gradleHome = tool name: 'GRADLE_HOME', type: 'gradle'
+		 grdlCmd = "${gradleHome}/bin/gradle"
+
+		 imagename = "harilearning1989/spring-rest-oracle-demo"
+     }
+         agent any
+	triggers {
+        	pollSCM '* * * * *'
+    	}
+        stages {
+            stage('Gradle') {
+                steps {
+                    withEnv(["JAVA_HOME=${tool 'JAVA_HOME'}", "PATH=${tool 'JAVA_HOME'}/bin:${env.PATH}"]) {
+                    git 'https://github.com/harilearning1989/SpringRestOracleProducer.git'
+                    sh 'java -version'
+                    echo "Gradle"
+                    sh "${grdlCmd} -v"
+                    sh "${grdlCmd} build"
+                    }
+                }
+            }
+            stage('Build Docker Image'){
+                steps{
+                  //bat 'docker build -t spring-rest-maven .'
+                    sh 'docker build -t harilearning1989/spring-rest-oracle-demo:latest .'
+                }
+            }
+            stage('Push Docker Image'){
+                steps{
+                    //bat 'docker push harilearning1989/spring-rest-maven'
+                    sh 'docker push harilearning1989/spring-rest-oracle-demo:latest'
+                }
+            }
+        }
+}

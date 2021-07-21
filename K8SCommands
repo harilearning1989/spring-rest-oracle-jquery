@@ -1,0 +1,28 @@
+#kubectl cluster-info
+kubectl get deployments
+kubectl run spring-gradle-jar --image=harilearning1989/spring-gradle-jar:first --port=8081
+kubectl get pods
+kubectl get pods --watch
+kubectl version
+kubectl get namespace
+kubectl get service
+
+kubectl create -f back-deployment.yaml
+kubectl get deployments
+kubectl expose deployment knote --type=ClusterIP --port 8081 --target-port 8081 --selector="app=knote,tier=backend"
+kubectl get services
+kubectl scale deployment knote --replicas=2
+kubectl create -f frontend-deployment.yaml
+kubectl get deployments
+kubectl get services
+
+kubectl delete service demo-frontend
+kubectl delete deployment demo-frontend
+kubectl delete service demo-backend
+kubectl delete deployment demo-backend
+
+kubectl get services --all-namespaces
+kubectl get pods --all-namespaces
+
+http://10.97.110.44:30001
+

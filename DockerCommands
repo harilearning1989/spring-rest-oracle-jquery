@@ -1,0 +1,64 @@
+#Below is enough for Basic
+#========Starting===========
+#FROM adoptopenjdk:11-jre-hotspot
+#EXPOSE 8082
+#ADD build/libs/spring-rest-gradle.war spring-rest-gradle.war
+#ENTRYPOINT ["java","-jar","spring-rest-gradle.war"]
+#========Ending===========
+
+#FROM openjdk:8-jdk-alpine
+#LABEL maintainer="callicoder@gmail.com"
+#VOLUME /tmp
+#EXPOSE 8080
+#ARG JAR_FILE=target/websocket-demo-0.0.1-SNAPSHOT.jar
+#ADD ${JAR_FILE} websocket-demo.jar
+#ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/websocket-demo.jar"]
+#RUN  CMD ARG
+
+#docker build -t spring-rest-gradle-docker .
+#docker run -it -p 8081:8081 237f7eb48e5d
+#docker run -it -p 8082:8082 d7931437caeb
+#docker run -it --network spring-docker --name spring-rest-gradle-docker -p 8081:8081 -d e00d70402216
+#docker run -it --network spring-docker --name spring-feign-gradle-docker -p 8082:8082 -d d7931437caeb
+
+#docker inspect spring-rest-docker
+#docker inspect --format '{{ .State.Status }}' 237f7eb48e5d
+#docker attach containerId
+#docker run -it --expose 8081 -p 8081:8081 237f7eb48e5d
+#docker start abdb1e4d5f43
+#docker inspect abdb1e4d5f43
+#docker ps -a
+#docker stop abdb1e4d5f43
+#docker network create spring-docker
+#docker network prune   removes the un used networks
+#docker network ls
+#docker network inspect spring-docker
+#Docker Apis
+#http://172.20.10.6:8081/rest/countryCode
+#http://localhost:8081/rest/countryCode
+#http://localhost:8081/rest/countries
+#http://localhost:8081/rest/all
+#http://localhost:8081/rest/countryState
+#http://localhost:8081/rest/allRegionCountiesByRegion?region=Asia
+#http://localhost:8081/rest/allRegionCountiesRegion
+#http://localhost:8081/rest/allRegionCounties
+#http://localhost:8081/rest/countryStates
+#http://localhost:8081/rest/covidData
+#http://localhost:8081/rest/addr
+
+#docker image build -t employee-consumer .
+#docker container run --name consumer -d employee-consumer
+#docker container logs consumer
+#docker container stop consumer
+#docker container rm consumer
+#docker network ls
+#docker network create consumer-producer
+#docker container run --network consumer-producer --name producer -p 8081:8081 -d employee-producer
+#docker container run --network consumer-producer --name consumer -d employee-consumer
+#docker container logs consumer
+#docker rmi $(docker images -qa -f 'dangling=true')
+
+#docker run -it --network spring-docker --name spring-docker --expose 8082 -p 8081:8081 -d e7c8274af0a0
+#docker run -it --network spring-docker --name spring-docker -p 8082:8081 -d e7c8274af0a0
+#http://172.20.10.6:8082/rest/countryCode
+#docker run -it --expose 8081 -p 8081:8081 237f7eb48e5d

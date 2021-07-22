@@ -13,15 +13,16 @@ import java.util.function.Supplier;
 public class ReadEmployeeSupplier implements Supplier<List<EmployeeDTO>> {
     @Override
     public List<EmployeeDTO> get() {
+        String file = "csv/employee.csv";
         try {
-            DownloadGitHubFiles.downloadFile("csv/employee.csv");
+            DownloadGitHubFiles.downloadFile(file);
         } catch (Exception e) {
             e.printStackTrace();
         }
         List<EmployeeDTO> listCrop = null;
         try {
             TimeUnit.SECONDS.sleep(2);
-            listCrop = new CsvToBeanBuilder(new FileReader("D:/DataFiles/Downloaded/csv/employee.csv"))
+            listCrop = new CsvToBeanBuilder(new FileReader("D:/DataFiles/Downloaded/" + file))
                     .withType(EmployeeDTO.class)
                     .build()
                     .parse();

@@ -18,7 +18,7 @@ function loadAllTheTables() {
 
 function fire_ajax_submit() {
     var search = {}
-    search["state"] = $("#state").val();
+    search["mandal"] = $("#mandal").val();
     $("#btn-search").prop("disabled", true);
     $.ajax({
         type: "POST",
@@ -28,12 +28,24 @@ function fire_ajax_submit() {
         dataType: 'json',
         cache: false,
         timeout: 600000,
-        success: function (data) {
-            var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
-                + JSON.stringify(data, null, 4) + "&lt;/pre&gt;";
-            $('#feedback').html(json);
-            console.log("SUCCESS : ", data);
+        success: function (response) {
+            //var json = "<h4>Ajax Response</h4>&lt;pre&gt;"+ JSON.stringify(data, null, 4) + "&lt;/pre&gt;";
+            //$('#feedback').html(json);
+            //console.log("SUCCESS : ", data);
             $("#btn-search").prop("disabled", false);
+
+            $('#example').dataTable( {
+                data : response.result,
+                columns: [
+                    {"data" : "nameOfTheBeneficiary"},
+                    {"data" : "villageName"},
+                    {"data" : "categoryLoaneeNonLoanee"},
+                    {"data" : "crop"},
+                    {"data" : "claimAmountRs"}
+                ],
+                searching : true,
+                bDestroy: true
+            });
         },
         error: function (e) {
             var json = "<h4>Ajax Response</h4>&lt;pre&gt;"

@@ -11,13 +11,9 @@ import java.util.Arrays;
 public class SpringJQueryApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
-
         //SpringApplication.run(SpringJQueryApplication.class, args);
 
         ApplicationContext ctx = SpringApplication.run(SpringJQueryApplication.class, args);
-
-        System.out.println("NinjaSquare server up and running with Spring Boot!");
-        System.out.println("Let's inspect the beans provided by Spring Boot:");
 
         String[] beanNames = ctx.getBeanDefinitionNames();
         Arrays.sort(beanNames);

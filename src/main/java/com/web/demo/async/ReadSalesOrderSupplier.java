@@ -9,19 +9,21 @@ import java.io.FileReader;
 import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+
 import static java.util.Comparator.comparing;
 
 public class ReadSalesOrderSupplier implements Supplier<List<SalesOrderDTO>> {
     @Override
     public List<SalesOrderDTO> get() {
+        String file = "csv/SalesOrder.csv";
         try {
-            DownloadGitHubFiles.downloadFile("csv/SalesOrder.csv");
+            DownloadGitHubFiles.downloadFile(file);
         } catch (Exception e) {
             e.printStackTrace();
         }
         List<SalesOrderDTO> listCrop = null;
         try {
-            listCrop = new CsvToBeanBuilder(new FileReader("D:/DataFiles/Downloaded/csv/SalesOrder.csv"))
+            listCrop = new CsvToBeanBuilder(new FileReader("D:/DataFiles/Downloaded/" + file))
                     .withType(SalesOrderDTO.class)
                     .build()
                     .parse();

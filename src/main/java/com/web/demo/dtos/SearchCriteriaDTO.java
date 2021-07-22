@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank;
 
 public class SearchCriteriaDTO {
 
-    @NotBlank(message = "state can't empty!")
+    @NotBlank(message = "mandal can't empty!")
     private String mandal;
 
     public String getMandal() {

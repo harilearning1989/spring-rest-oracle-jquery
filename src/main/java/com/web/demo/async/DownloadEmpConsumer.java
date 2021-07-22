@@ -25,7 +25,7 @@ public class DownloadEmpConsumer implements Consumer<String> {
         if (CommonUtils.isWindows()) {
             file = new File("D:/DataFiles/Downloaded/" + fileName);
         } else if (CommonUtils.isLinux()) {
-            file = new File("D:/DataFiles/Downloaded/" + fileName);
+            file = new File("/tmp/Downloaded/" + fileName);
         }
         copyURLToFile(url, file);
     }

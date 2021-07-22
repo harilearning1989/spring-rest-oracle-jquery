@@ -58,3 +58,6 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+bootWar{
+	archiveName 'spring-rest-oracle-jquery.war'
+}

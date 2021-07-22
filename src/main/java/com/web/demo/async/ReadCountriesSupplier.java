@@ -12,14 +12,15 @@ import java.util.function.Supplier;
 public class ReadCountriesSupplier implements Supplier<List<CountriesDTO>> {
     @Override
     public List<CountriesDTO> get() {
+        String file = "csv/CountriesRegions.csv";
         try {
-            DownloadGitHubFiles.downloadFile("csv/CountriesRegions.csv");
+            DownloadGitHubFiles.downloadFile(file);
         } catch (Exception e) {
             e.printStackTrace();
         }
         List<CountriesDTO> listCrop = null;
         try {
-            listCrop = new CsvToBeanBuilder(new FileReader("D:/DataFiles/Downloaded/csv/CountriesRegions.csv"))
+            listCrop = new CsvToBeanBuilder(new FileReader("D:/DataFiles/Downloaded/" + file))
                     .withType(CountriesDTO.class)
                     .build()
                     .parse();

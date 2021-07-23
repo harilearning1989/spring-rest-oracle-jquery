@@ -18,7 +18,7 @@ spring:
     #username: ORACLE_DEMO
     #password: dudkrish1A
     username: SYSTEM
-    password: manager
+    password: dudkrish1A
     jpa:
       show-sql: true
       format-sql: true

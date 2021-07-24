@@ -47,7 +47,7 @@ pipeline{
           steps
           {
              //bat 'docker push harilearning1989/spring-rest-maven'
-             sh 'docker tag spring-rest-oracle-jquery harilearning1989/spring-rest-oracle-jquery:1.0.0'
+             sh 'docker tag spring-rest-oracle-jquery:1.0.0 harilearning1989/spring-rest-oracle-jquery:1.0.0'
              sh 'docker push harilearning1989/spring-rest-oracle-jquery:1.0.0'
           }
        }

@@ -39,7 +39,7 @@ pipeline{
           steps
           {
              //bat 'docker build -t spring-rest-oracle-jquery .'
-             sh 'docker build -t harilearning1989/spring-rest-oracle-jquery .'
+             sh 'docker build -t harilearning1989/spring-rest-oracle-jquery:1.0.0 .'
           }
        }
        stage('Push Docker Image')

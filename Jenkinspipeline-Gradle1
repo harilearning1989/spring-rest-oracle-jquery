@@ -13,8 +13,8 @@ pipeline{
 
 		 imagename = "harilearning1989/spring-rest-oracle-jquery"
 
-		 registry = "harilearning1989/spring-rest-oracle-jquery"
-         registryCredential = 'DockerRegistry'
+		 registry = "YourDockerhubAccount/YourRepository"
+         registryCredential = 'dockerhub_id'
          dockerImage = ''
      }
     agent any
@@ -42,44 +42,20 @@ pipeline{
        {
           steps
           {
-				echo "Nothing"
              //bat 'docker build -t spring-rest-oracle-jquery .'
-             //sh 'docker build -t harilearning1989/spring-rest-oracle-jquery:1.0.2 .'
+             sh 'docker build -t harilearning1989/spring-rest-oracle-jquery:1.0.2 .'
              //sh 'docker build -t harilearning1989/spring-rest-oracle-jquery .'
           }
        }
-	   stage('Building our image') {
-            steps {
-                script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-               }
-            }
-        }
-		 stage('Deploy our image') {
-            steps {
-                script {
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }
        stage('Push Docker Image')
        {
           steps
           {
-			echo "Nothing"
              //bat 'docker push harilearning1989/spring-rest-maven'
              //sh 'docker tag spring-rest-oracle-jquery:1.0.0 harilearning1989/spring-rest-oracle-jquery:1.0.0'
-             //sh 'docker push harilearning1989/spring-rest-oracle-jquery:1.0.2'
+             sh 'docker push harilearning1989/spring-rest-oracle-jquery:1.0.2'
           }
        }
-	   stage('Cleaning up') {
-            steps {
-				echo "CleanUp"
-                //sh "docker rmi $registry:$BUILD_NUMBER"
-            }
-        }
        stage('compile')
        {
           steps
